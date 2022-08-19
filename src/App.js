@@ -4,12 +4,14 @@ import {BrowserRouter as Router , Routes,Route} from 'react-router-dom';
 import MovieList from './components/MovieList';
 import Watched from './components/Watched';
 import AddMovie from './components/AddMovie';
+import {GlobalProvider} from './context/State';
 
 
 
 function App() {
   return (
-    <Router>
+    <GlobalProvider>
+      <Router>
       <Header />
       <Routes>
         <Route path="/" element={<MovieList />} />
@@ -17,6 +19,7 @@ function App() {
         <Route path="/add" element={<AddMovie />} />
       </Routes>
     </Router>
+    </GlobalProvider>
   );
 }
 

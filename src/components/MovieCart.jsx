@@ -1,8 +1,11 @@
 import { Avatar, Button, Grid,Stack, Typography } from '@mui/material';
 import React from 'react'
+import { useContext } from 'react';
+import {GlobalContext} from '../context/State';
 
 export const MovieCart = ({movie}) => {
     console.log(movie);
+    const {addMovieToWatchlist} = useContext(GlobalContext);
   return (
     <Stack direction="column" flex={4} sx={{marginTop:"30px",marginLeft:"300px"}}>
         <Grid container>
@@ -22,7 +25,7 @@ export const MovieCart = ({movie}) => {
                         </Stack>
                     </Stack>
                     <Stack direction="row" sx={{marginLeft:"auto"}}>
-                            <Button variant="container" sx={{background:"yellow"}}>
+                            <Button variant="container" sx={{background:"yellow"}} onClick={()=>addMovieToWatchlist(movie)}>
                                 ADD TO WATCHLIST
                             </Button>
                             <Button variant="container" sx={{background:"yellow",marginLeft:"20px"}}>

@@ -6,7 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import CloseIcon from '@mui/icons-material/Close';
 
 function MovieList() {
-  const {watchlist} = useContext(GlobalContext);
+  const {watchlist,removeMovieFromWatchlist,addMovieToWatched} = useContext(GlobalContext);
   return (
     <Box sx={{marginTop:"2rem",marginLeft:"2rem"}}>
       <Grid container>
@@ -15,8 +15,8 @@ function MovieList() {
                 <Grid item lg={6} sx={{marginLeft:"1rem"}}>
                    <Avatar variant="square" sx={{width:"200px",height:"300px"}} src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} />
                    <Box sx={{marginTop:"0.4rem",marginLeft:"4rem",cursor:"pointer"}}>
-                        <VisibilityIcon />
-                        <CloseIcon sx={{marginLeft:"0.3em"}} />
+                        <VisibilityIcon onClick={()=>addMovieToWatched(movie)} />
+                        <CloseIcon sx={{marginLeft:"0.3em"}} onClick={()=>removeMovieFromWatchlist(movie.id)} />
                    </Box>
                 </Grid>
       ))}
